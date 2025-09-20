@@ -1,7 +1,14 @@
 import numpy as np
 
 def make_h_theta(b, w):
+    """
+    Cria a função que computa h_theta
+    :param b: float - bias (intercepto da reta)
+    :param w: float - peso (inclinacao da reta)
+    :return: float -> float - função h_theta
+    """
     return lambda x : ((x * w) + b)
+
 
 def compute_mse(b, w, data):
     """
@@ -21,6 +28,7 @@ def compute_mse(b, w, data):
     err = h_theta(x) - y
 
     return np.sum(err * err) / m
+
 
 def compute_mse_deriv(b, w, data):
     """
@@ -44,6 +52,7 @@ def compute_mse_deriv(b, w, data):
 
     return b_, w_
 
+
 def step_gradient(b, w, data, alpha):
     """
     Executa uma atualização por descida do gradiente  e retorna os valores atualizados de b e w.
@@ -58,6 +67,27 @@ def step_gradient(b, w, data, alpha):
 
     return b - (alpha * b_), w - (alpha * w_)
 
+
+def make_normalize(data):
+    """
+    Cria as funções que normalizam/denormalizam um 
+
+    :param data: np.array - matriz com o conjunto de dados, x na coluna 0 e y na coluna 1
+    :param b: float - bias (intercepto da reta)
+    :param w: float - peso (inclinacao da reta)
+    :param alpha: float - taxa de aprendizado (a.k.a. tamanho do passo)
+    :param num_iterations: int - numero de épocas/iterações para executar a descida de gradiente
+    :return: list,list - uma lista com os b e outra com os w obtidos ao longo da execução
+    """
+    max_data = np.max(data)
+    min_data = np.min(data)
+
+    length = max_data - min_data
+
+    normalize = lambda x : (x - min_data) / length
+    denormalize = lambda x : x * length + min_data
+    
+    return normalize, denormalize
 
 def fit(data, b, w, alpha, num_iterations):
     """
@@ -74,11 +104,15 @@ def fit(data, b, w, alpha, num_iterations):
     :param num_iterations: int - numero de épocas/iterações para executar a descida de gradiente
     :return: list,list - uma lista com os b e outra com os w obtidos ao longo da execução
     """
+    normalize, denormalize = make_normalize(data)
+    normalized_data = normalize(data)
+
     bs = [b]
     ws = [w]
+    b = normalize(b)
     for _ in range(num_iterations):
-        b, w = step_gradient(b, w, data, alpha)
-        bs.append(b)
+        b, w = step_gradient(b, w, normalized_data, alpha)
+        bs.append(denormalize(b))
         ws.append(w)
 
     return bs, ws
