@@ -5,7 +5,7 @@ grupo
 
     | Nome                  | Matrícula | Turma |
     |:----------------------|:---------:|:------|
-    | Lucas                 |           |       |
+    | Lucas Giron           | 00577244  | B     |
     | Matheus Machado Cezar | 00597894  | B     |
     | Rodrigo Brock         |           |       |
 
