@@ -7,7 +7,7 @@ grupo
     |:----------------------|:---------:|:------|
     | Lucas Giron           | 00577244  | B     |
     | Matheus Machado Cezar | 00597894  | B     |
-    | Rodrigo Brock         |           |       |
+    | Rodrigo Brock         | 00329957  | A     |       
 
 * Valores iniciais de b, w, valores de alpha e num_iterations que resultem na melhor execução da sua regressão linear. Especifique também o melhor erro quadrático médio obtido na sua implementação da regressão linear
 
