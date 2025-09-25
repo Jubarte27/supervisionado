@@ -58,7 +58,7 @@ O mais fácil de se lidar dentre os 4. Já foi visto em aula, portanto não houv
 
 | Acurácia | Tempo de treinamento |
 |:---------|:---------------------|
-| 91%      | 100.51               |
+| 91%      | 100.5s               |
 
 Possui muitas características iguais ao mnist, mas o nível de detalhe em cada imagem dificulta alcançar uma acurácia tão boa quanto a do mnist. Ajustes finos na quantidade de convoluções poderiam resultar em uma acurácia mais alta, mas para isso necessitaria de mais testes.
 
